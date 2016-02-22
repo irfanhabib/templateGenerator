@@ -5,7 +5,6 @@ var urlPrefix = 'http://www.bungie.net/';
 
 function nightfallDetails(advisorData) {
 
-
     var nightfallData = _.get(advisorData, 'Response.data.nightfall');
 
 

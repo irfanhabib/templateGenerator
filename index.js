@@ -22,6 +22,8 @@ advisor.getAdvisor().then(function(response) {
         console.log('Template Generator app is running on port', app.get('port'));
     });
 
+}).catch(function(){
+    console.log(arguments);
 });
 
 
