@@ -1,0 +1,14 @@
+{
+  "name": "bc983NewsGenerator",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "destiny-api": "^1.0.0",
+    "destiny-client": "~0.5.2",
+    "express": "^1.0.8",
+    "lodash": "^4.5.1",
+    "needle": "^1.0.0",
+    "q": "^1.4.1"
+  }
+}
