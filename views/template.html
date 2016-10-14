@@ -53,10 +53,10 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-3" style="padding-right: 5px;">
+            <!--<div class="col-sm-3" style="padding-right: 5px;">-->
                 <div class="tab-content">
                     <div id="division" class="tab-pane fade in active">
-                        <ul class="nav nav-pills nav-stacked"
+                        <ul class="nav nav-pills"
                             style="background-color: #202020; color: #428bca; border-collapse: collapse;">
                             <li style="border-bottom: 1px solid white; border-collapse: collapse;"><a
                                     style="color: #428bca !important;" data-toggle="tab" href="#home">
@@ -76,11 +76,15 @@
                             </a></li>
                             <li style="border-bottom: 1px solid white; border-collapse: collapse;"><a
                                     style="color: #428bca !important;" data-toggle="tab" href="#clan">
-                                <small>Clan Info & Statistics</small>
+                                <small>Clan Info</small>
                             </a></li>
                             <li style="border-bottom: 1px solid white; border-collapse: collapse;"><a
-                                    style="color: #428bca !important;" data-toggle="tab" href="#clanStats">
-                                <small>Clan Statistics</small>
+                                    style="color: #428bca !important;" data-toggle="tab" href="#clanstats">
+                                <small>Clan Stats</small>
+                            </a></li>
+                            <li style="border-bottom: 1px solid white; border-collapse: collapse;"><a
+                                    style="color: #428bca !important;" data-toggle="tab" href="#xur">
+                                <small>Xur</small>
                             </a></li>
                             <!--<li style="border-bottom: 1px solid white; border-collapse: collapse;"><a-->
                             <!--style="color: #ff6d10 !important;" data-toggle="tab" href="#myWeekly">-->
@@ -99,13 +103,13 @@
                 </div>
             </div>
 
-            <div class="col-sm-9" style="padding-left: 5px;">
+            <div class="row">
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">
-                        <p>Introducing the New Weekly Advisor Section that features information about most weekly
+                        <h4><br>Introducing the New Weekly Advisor Section that features information about most weekly
                             activities.
                             For any feedback, please message a Mod.
-                        </p>
+                        </h4>
                         <div class="well well-dark-transparent">
                             <div class="row">
                                 <div class="col-md-6">
@@ -127,6 +131,7 @@
                     $TMPL_WC_SECTION$
                     <div id="clan" class="tab-pane fade in">
                         <div class="col-xs-12 col-md-9">
+                            <br>
                             <p>Our Clan, The Unholy Misfits 938, exists for earning achievements such as: Raiding Party,
                                 Flawless Raider,
                                 Strength of the Pack, etc. Communication and Scheduling should be done through this
@@ -155,6 +160,16 @@
                                        class="btn btn-primary">BC938 Stats</a></li>
                             </ul>
                             <br>
+                        </div>
+                    </div>
+                    <div id="clanstats" class="tab-pane fade in">
+                        <div class="col-xs-12 col-md-9">
+                            $TMPL_STATS_SECTION$
+                        </div>
+                    </div>
+                    <div id="xur" class="tab-pane fade in">
+                        <div class="col-xs-12 col-md-9">
+                            $TMPL_XUR_SECTION$
                         </div>
                     </div>
                     <!--<div id="twitch" class="tab-pane fade">-->

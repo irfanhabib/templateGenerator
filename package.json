@@ -7,8 +7,10 @@
   },
   "dependencies": {
     "express": "^4.12.4",
+    "html-tablify": "^2.0.2",
     "lodash": "^4.5.1",
     "needle": "^1.0.0",
-    "q": "^1.4.1"
+    "q": "^1.4.1",
+    "request": "^2.75.0"
   }
 }
