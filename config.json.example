@@ -1,0 +1,4 @@
+{
+  "X-API-KEY": "somekey",
+  "proxy": "http://myproxy:8080"
+}

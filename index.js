@@ -8,14 +8,16 @@ var Xur = require('./xur');
 var express = require('express');
 var app = express();
 
+var config = require('./config.json');
+
 var fs = require('fs');
 var template = fs.readFileSync('views/template.html', 'utf8');
 
 app.set('port', (process.env.PORT || 5555));
 app.get('/', function (request, response) {
 
-    clanStats.getClanStats().then(function(clanStatsHTML){
-        advisor.getAdvisor().then(function (advisorResponse) {
+    clanStats.getClanStats(config).then(function(clanStatsHTML){
+        advisor.getAdvisor(config).then(function (advisorResponse) {
             var nfSection = nightfall.getNightfallSection(advisorResponse);
             var weeklyheroicSection = weeklyHeroics.getWeeklyHeroicSection(advisorResponse);
             var weeklyCrucibleSection = weeklyCrucible.getWeeklyCrucibleSection(advisorResponse);
@@ -33,10 +35,9 @@ app.get('/', function (request, response) {
             response.send("Exception occurred fetching template");
             console.log(arguments);
         });
-    })
-
-
+    });
 });
+
 app.listen(app.get('port'), function () {
     console.log('Template Generator app is running on port', app.get('port'));
 });

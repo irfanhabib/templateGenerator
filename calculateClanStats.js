@@ -1,16 +1,7 @@
-var Q = require('q');
 var _ = require('lodash');
 var needle = require('needle');
-var CONSTANTS = require('./constants');
 var clan = require('./clan');
-var request = require('request');
 var html_tablify = require('html-tablify');
-
-
-var header = {
-    'X-API-Key': CONSTANTS.API_KEY
-};
-
 
 var headers = {
     raidKills: 'Raid Kills',
@@ -120,8 +111,8 @@ function calculateStats(clanInfo) {
     return stats;
 }
 
-module.exports.getClanStats = function () {
-    return clan.getClanInformation().then(function (clanInfo) {
+module.exports.getClanStats = function (config) {
+    return clan.getClanInformation(config).then(function (clanInfo) {
 
         var sortedStats = {};
 
