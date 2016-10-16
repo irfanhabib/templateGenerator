@@ -14,7 +14,8 @@ function getRequestOptions(url){
     if (config.proxy){
         requestOptions["proxy"] = config.proxy;
     }
+    return requestOptions;
 }
 
 module.exports.getRequestOptions = getRequestOptions;
-modules.exports.request = Q.denodeify(request);
+module.exports.request = Q.denodeify(request);

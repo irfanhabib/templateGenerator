@@ -9,7 +9,8 @@ var headers = {
     strikesCleared: 'Strike Completions',
     pvpKdR: 'Average K/D',
     longestKillingSpree: 'Longest Kill Spree',
-    crucibleGames: 'Crucible Games'
+    crucibleGames: 'Crucible Games',
+    grimoire: 'Grimoire'
 };
 
 
@@ -24,6 +25,7 @@ function calculateStats(clanInfo) {
     stats.pvpKdR = [];
     stats.longestKillingSpree = [];
     stats.crucibleGames = [];
+    stats.grimoire = [];
 
 
     _.each(clanInfo, function (clanMember) {
@@ -35,7 +37,8 @@ function calculateStats(clanInfo) {
         // var arenasCleared = 0;
         var pvpKdR = 0.0;
         var crucibleGames = 0.0;
-        var longestKillingSpree = 0;
+        var longestKillingSpree = 0
+        var grimoire = 0;
         _.each(clanMember.characters, function (character) {
 
             if (_.has(character, 'raid.allTime.activitiesCleared.basic.value')) {
@@ -78,6 +81,14 @@ function calculateStats(clanInfo) {
             }
         });
 
+        _.each(clanMember.charInfo, function (character) {
+
+            if (character.characterBase.grimoireScore > grimoire){
+                grimoire = character.characterBase.grimoireScore;
+            }
+
+        });
+
         stats.raidKills.push({
             count: raidKills,
             user: clanMember
@@ -106,13 +117,18 @@ function calculateStats(clanInfo) {
             count: crucibleGames,
             user: clanMember
         });
+
+        stats.grimoire.push({
+            count: grimoire,
+            user: clanMember
+        });
     });
 
     return stats;
 }
 
-module.exports.getClanStats = function (config) {
-    return clan.getClanInformation(config).then(function (clanInfo) {
+module.exports.getClanStats = function () {
+    return clan.getClanInformation().then(function (clanInfo) {
 
         var sortedStats = {};
 
@@ -146,7 +162,9 @@ module.exports.getClanStats = function (config) {
             });
             var options = {
                 data: data,
-                header: ['name', 'count']
+                header: ['name', 'count'],
+                cellspacing: 5,
+                border: 1
             };
             var html_data = html_tablify.tablify(options);
 
@@ -160,7 +178,7 @@ module.exports.getClanStats = function (config) {
         var data = [];
         _.each(_.keys(stats), function (stat) {
 
-            if (stat === 'longestKillingSpree' || stat === 'pvpKdR') {
+            if (stat === 'longestKillingSpree' || stat === 'pvpKdR' || stat === 'grimoire') {
                 return;
             }
             var sum = _.sumBy(sortedStats[stat], function (o) {
@@ -175,7 +193,9 @@ module.exports.getClanStats = function (config) {
         var rootTable = '<div><h2>Clan-wide Stats</h2>';
         rootTable += html_tablify.tablify({
             data: data,
-            header: ['stat', 'cumulative count']
+            header: ['stat', 'cumulative count'],
+            cellspacing: 5,
+            border: 1
         });
         rootTable += '</div><br><br>';
 

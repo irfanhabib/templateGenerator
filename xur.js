@@ -51,11 +51,13 @@ function getTable(items){
             category: item.category,
             cost: item.cost
         })
-    })
+    });
 
     return html_tablify.tablify({
         data: data,
-        header: ['icon', 'name', 'type', 'category', 'cost']
+        header: ['icon', 'name', 'type', 'category', 'cost'],
+        cellspacing: 5,
+        border: 1
     });
 
 

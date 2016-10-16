@@ -16,8 +16,8 @@ var template = fs.readFileSync('views/template.html', 'utf8');
 app.set('port', (process.env.PORT || 5555));
 app.get('/', function (request, response) {
 
-    clanStats.getClanStats(config).then(function(clanStatsHTML){
-        advisor.getAdvisor(config).then(function (advisorResponse) {
+    clanStats.getClanStats().then(function(clanStatsHTML){
+        advisor.getAdvisor().then(function (advisorResponse) {
             var nfSection = nightfall.getNightfallSection(advisorResponse);
             var weeklyheroicSection = weeklyHeroics.getWeeklyHeroicSection(advisorResponse);
             var weeklyCrucibleSection = weeklyCrucible.getWeeklyCrucibleSection(advisorResponse);
