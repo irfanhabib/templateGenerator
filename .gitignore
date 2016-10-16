@@ -1,3 +1,5 @@
 views/_t*
 node_modules/
+.idea/*
 *.iml
+config.json
