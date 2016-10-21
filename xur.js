@@ -33,6 +33,7 @@ function getXurSection(advisorJson) {
         xurHTML += getTable(items);
 
         console.log(JSON.stringify(items));
+        console.log(xurHTML)
 
     }
     return xurHTML;
